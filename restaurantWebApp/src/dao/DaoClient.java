@@ -101,7 +101,8 @@ public class DaoClient {
 					rs.getInt("id"),
 					rs.getString("nom"),
 					rs.getString("prenom"),
-					comp
+					comp,
+					rs.getString("pass")
 				);
 		}
 
