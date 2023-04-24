@@ -2,10 +2,10 @@ package model;
 
 public class Client {
 	private int id;
-	private String password;
 	private String nom;
 	private String prenom;
 	private Complement complement;
+	private String password;
 
 	public Client() {
 		
@@ -17,8 +17,16 @@ public class Client {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
+	
+	public Client(int id, String nom, String prenom, Complement complement) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.complement = complement;
+	}
 
-	public Client(int id, String password, String nom, String prenom) {
+	public Client(int id, String nom, String prenom, String password) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -26,7 +34,7 @@ public class Client {
 		this.prenom = prenom;
 	}
 	
-	public Client(int id, String password, String nom, String prenom, Complement complement) {
+	public Client(int id, String nom, String prenom, Complement complement, String password) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -77,7 +85,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		String str = "Client id=" + id + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom;
+		String str = "Client id=" + id + ", nom=" + nom + ", prenom=" + prenom;
 		if (complement != null) {
 			str += " " + complement;
 		}
