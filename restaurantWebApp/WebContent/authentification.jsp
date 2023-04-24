@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,32 +37,35 @@
 		</div>
 	</div>
 	</nav> </header> <section class="d-flex justify-content-center">
-	<div>
-	
-	<form>
-  <div class="form-outline mb-4">
-    Indentifiant : <input type="email" id="form2Example1" class="form-control" placeholder="Saisir votre identifiant" />
-    <label class="form-label" for="form2Example1" ></label>
-  </div>
 
-  <div class="form-outline mb-4">
-    Mot de passe : <input type="password" id="form2Example2" class="form-control" placeholder="Saisir votre mot de passe" />
-    <label class="form-label" for="form2Example2"></label>
-  </div>
+		<form action="Authentification" >
+		
+			<div class="form-outline mb-4">
+				Indentifiant : <input type="text" id="form2Example1"
+					class="form-control" placeholder="Saisir votre identifiant"
+					name="identifiant" /> <label class="form-label"
+					for="form2Example1"></label>
+			</div>
 
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
-      <div class="form-check">
-        <input type="checkbox"/>
-        <label class="form-check-label" for="form2Example31">Se souvenir de moi</label>
-      </div>
-    </div>
-    
-  </div>
+			<div class="form-outline mb-4">
+				Mot de passe : <input type="password" id="form2Example2"
+					class="form-control" placeholder="Saisir votre mot de passe"
+					name="password" /> <label class="form-label" for="form2Example2"></label>
+			</div>
 
-  <button type="submit" class="btn btn-light">Se connecter</button>
-	
+			<div class="row mb-4">
+				<div class="col d-flex justify-content-center">
+					<div class="form-check">
+						<input type="checkbox" /> <label class="form-check-label"
+							for="form2Example31">Se souvenir de moi</label>
+					</div>
+				</div>
 
+			</div>
+
+			<button type="submit" class="btn btn-light">Se connecter</button>
+			
+		</form>
+		
 </body>
 </html>
