@@ -1,5 +1,7 @@
 package model;
 
+import model.ECategorie;
+
 public class Article {
 	private int ref;
 	private String nom;

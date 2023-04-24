@@ -32,6 +32,7 @@ public class Client {
 		this.password = password;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.complement = new Complement();
 	}
 	
 	public Client(int id, String nom, String prenom, Complement complement, String password) {
