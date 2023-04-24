@@ -5,21 +5,31 @@ public class Article {
 	private String nom;
 	private String description;
 	private ECategorie categorie;
-	private int prix;
-	private String imageUrl;
+	private double tarif;
+	private String urlImage;
 	
 	public Article() {
 		super();
 	}
 
-	public Article(int ref, String nom, String description, ECategorie categorie, int prix, String imageUrl) {
+	public Article(int ref, String nom, String description, double tarif, String urlImage) {
+		super();
+		this.ref = ref;
+		this.nom = nom;
+		this.description = description;
+		this.tarif = tarif;
+		this.urlImage = urlImage;
+	}
+
+	
+	public Article(int ref, String nom, String description, double tarif, String urlImage, ECategorie categorie) {
 		super();
 		this.ref = ref;
 		this.nom = nom;
 		this.description = description;
 		this.categorie = categorie;
-		this.prix = prix;
-		this.imageUrl = imageUrl;
+		this.tarif = tarif;
+		this.urlImage = urlImage;
 	}
 
 	public int getRef() {
@@ -54,26 +64,26 @@ public class Article {
 		this.categorie = categorie;
 	}
 
-	public int getPrix() {
-		return prix;
+	public double getTarif() {
+		return tarif;
 	}
 
-	public void setPrix(int prix) {
-		this.prix = prix;
+	public void setTarif(double tarif) {
+		this.tarif = tarif;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getUrlImage() {
+		return urlImage;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 
 	@Override
 	public String toString() {
 		return "Article [ref=" + ref + ", nom=" + nom + ", description=" + description + ", categorie=" + categorie
-				+ ", prix=" + prix + ", imageUrl=" + imageUrl + "]";
+				+ ", tarif=" + tarif + ", urlImage=" + urlImage + "]";
 	}
 	
 }
