@@ -30,6 +30,10 @@ public class LignePanier {
 	public void setQte(int qte) {
 		this.qte = qte;
 	}
+	
+	public double getPrixTotal() {
+		return article.getTarif() * qte;
+	}
 
 	@Override
 	public String toString() {

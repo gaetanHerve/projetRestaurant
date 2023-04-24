@@ -21,6 +21,14 @@ public class Panier {
 	public void setLignes(List<LignePanier> lignes) {
 		this.lignes = lignes;
 	}
+	
+	public double getTotal() {
+		double result = 0;
+		for (LignePanier ligne : lignes) {
+			result += ligne.getArticle().getTarif() * ligne.getQte();
+		}
+		return result;
+	}
 
 	@Override
 	public String toString() {
