@@ -10,6 +10,13 @@ public class Client {
 	public Client() {
 		
 	}
+	
+	public Client(int id, String nom, String prenom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
 
 	public Client(int id, String password, String nom, String prenom) {
 		super();
