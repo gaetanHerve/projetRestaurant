@@ -16,7 +16,7 @@ import model.Complement;
 /**
  * Servlet implementation class Inscription
  */
-@WebServlet("/inscription")
+@WebServlet("/getinscription")
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,8 +52,7 @@ public class Inscription extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// request.setAttribute("client", c);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("authentification").forward(request, response);
 	}
 
 	/**

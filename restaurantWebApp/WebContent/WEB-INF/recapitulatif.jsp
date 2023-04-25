@@ -28,14 +28,28 @@
 			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="authentification">Login</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="inscription">Inscription</a>
-			        </li>
-			        <li class="nav-item">
 			          <a class="nav-link" href="panier">Mon Menu</a>
 			        </li>
+			        <%
+			        	Client clientMenu = (Client)session.getAttribute("client");
+			        	boolean isClient = (clientMenu !=null && clientMenu.getId()!=0);
+			        %>
+			        <%if(isClient){%>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="compte.jsp">Compte</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="deco">Déconnexion</a>
+			        	</li>
+			        <%} %>
+			        <%if(!isClient){%>
+			        	<li class="nav-item">
+				          <a class="nav-link" href="authentification">Login</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="inscription">Inscription</a>
+				        </li>
+			        <%} %>
 			      </ul>
 			    </div>
 			  </div>
@@ -49,12 +63,13 @@
 				Client client = new Client();
 			}
 			Panier panier = (Panier) session.getAttribute("panier");
+			String prixTotal = request.getParameter("prixTotal");
 		%>	
 		
 		<section class="d-flex align-items-center flex-column">
 			<p class="text-success recap">Félicitation <c:out value="${client.getPrenom()}"/> <c:out value="${client.getNom()}"/>.
 			<br>Votre commande est validée.<br>
-			Le montant total est de <c:out value="${request.getAttribute("prixTotal")}€"/></p>
+			Le montant total est de <%= prixTotal %>€</p>
 			<img alt="photo bon appetit" width="200px" src="images/validee.jpg">
 		</section>
 	</main>

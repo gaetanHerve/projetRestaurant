@@ -2,9 +2,9 @@
 <%@ page import="java.util.ArrayList"%>
 <%@page import="model.Panier"%>
 <%@page import="model.Client"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,14 +34,28 @@
 			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="authentification">Login</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="inscription">Inscription</a>
-			        </li>
-			        <li class="nav-item">
 			          <a class="nav-link" href="panier">Mon Menu</a>
 			        </li>
+			        <%
+			        	Client clientMenu = (Client)session.getAttribute("client");
+			        	boolean isClient = (clientMenu !=null && clientMenu.getId()!=0);
+			        %>
+			        <%if(isClient){%>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="compte.jsp">Compte</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="deco">Déconnexion</a>
+			        	</li>
+			        <%} %>
+			        <%if(!isClient){%>
+			        	<li class="nav-item">
+				          <a class="nav-link" href="authentification">Login</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="inscription">Inscription</a>
+				        </li>
+			        <%} %>
 			      </ul>
 			    </div>
 			  </div>
@@ -49,10 +63,9 @@
 		</header>
 		
 		<%
+			Client client = new Client();
 			if (session.getAttribute("client") != null) {
-				Client client = (Client) session.getAttribute("client");	
-			} else {
-				Client client = new Client();
+				client = (Client) session.getAttribute("client");	
 			}
 			Panier panier = (Panier) session.getAttribute("panier");
 		%>
@@ -92,7 +105,7 @@
 					</a> 
 				</div>
 				<!-- RENAME ACTION!! -->
-				<form class="col" action="ServletRecap" method="POST">
+				<form class="col" action="recap" method="POST">
 					<input type="hidden" name="prixTotal" value="${panier.getTotal()}">
 					<button type="submit" style="float: right;" class="btn btn-success impact-btn">
 						Valider la commande
