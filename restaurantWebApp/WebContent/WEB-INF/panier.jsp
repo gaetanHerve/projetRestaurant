@@ -45,7 +45,11 @@
 		</header>
 		
 		<%
-			Client client = (Client) session.getAttribute("client");
+			if (session.getAttribute("client") != null) {
+				Client client = (Client) session.getAttribute("client");	
+			} else {
+				Client client = new Client();
+			}
 			Panier panier = (Panier) session.getAttribute("panier");
 			Carte carte = (Carte) application.getAttribute("carte");
 		%>
@@ -61,7 +65,7 @@
 		</div>
 		
 		<div id="mainSection" class="row">
-			<div id="selectionArticles" class="col">
+			<div id="selectionArticles" class="col m-2">
 				<form action="panier" method="POST">
 					 <label for="articles"><b>Fais ton choix parmis nos plats fait maison :</b></label>
 					<select class="form-select mt-2" name="article" id="articles">
@@ -69,12 +73,14 @@
 					   		<option value="${article.getRef()}"><c:out value="${article.getNom()}"></c:out></option>
 				   		</c:forEach>	
 					</select>
-					<label for="cars"><b>Quantité :</b></label>
-					<input class="mt-2" type="number" name="quantity" value="1">
+					<div class="mt-2 mb-2" style="display: inline-block;">
+						<label for="cars"><b>Quantité :</b></label>
+						<input class="mt-2" type="number" name="quantity" value="1">
+					</div>
 					<button class="btn btn-secondary btn-sm" type="submit">Ajouter au panier</button>
 				</form>
 			</div>
-			<div id="recapArticles" class="col">
+			<div id="recapArticles" class="col m-2 mt-0">
 				
 				<table class="table">
 				  <thead>

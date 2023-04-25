@@ -37,10 +37,9 @@ public class ServletPanier extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		ServletContext app = request.getServletContext();
-		// TODO: uncomment that : Carte carte = app.getAttribute("carte");
+		
 		if (session.getAttribute("panier") == null) {
 			Panier panier = new Panier();
 			session.setAttribute("panier", panier);
@@ -48,27 +47,31 @@ public class ServletPanier extends HttpServlet {
 			Panier panier = (Panier)session.getAttribute("panier");
 		}
 		
-		// TO REMOVE
 		Carte carte = new Carte();
-		ArrayList<Article> articlesCarte = new ArrayList<Article>();
-		Article a1 = new Article(1, "article1", "super article", 12.5, "leuzvleuvf");
-		Article a2 = new Article(2, "article2", "super article aussi", 34.5, "leuzvleuvf");
-		Article a3 = new Article(3, "article3", "super article", 12.5, "leuzvleuvf");
-		Article a4 = new Article(4, "article4", "super article aussi", 34.5, "leuzvleuvf");
-		Article a5 = new Article(5, "article5", "super article", 12.5, "leuzvleuvf");
-		Article a6 = new Article(6, "article6", "super article aussi", 34.5, "leuzvleuvf");
-		articlesCarte.add(a1);
-		articlesCarte.add(a2);
-		articlesCarte.add(a3);
-		articlesCarte.add(a4);
-		articlesCarte.add(a5);
-		articlesCarte.add(a6);
-		carte.setArticles(articlesCarte);
-		app.setAttribute("carte", carte);
-		Client client = new Client(1, "DUPOND", "Toto");
-		// END TO REMOVE;
+		if (session.getAttribute("carte") == null) {
+			app.setAttribute("carte", carte);
+		} else {
+			carte = (Carte)app.getAttribute("carte");
+		}
 		
-		session.setAttribute("client", client);
+		// TO REMOVE : test dataset
+//		ArrayList<Article> articlesCarte = new ArrayList<Article>();
+//		Article a1 = new Article(1, "article1", "super article", 12.5, "leuzvleuvf");
+//		Article a2 = new Article(2, "article2", "super article aussi", 34.5, "leuzvleuvf");
+//		Article a3 = new Article(3, "article3", "super article", 12.5, "leuzvleuvf");
+//		Article a4 = new Article(4, "article4", "super article aussi", 34.5, "leuzvleuvf");
+//		Article a5 = new Article(5, "article5", "super article", 12.5, "leuzvleuvf");
+//		Article a6 = new Article(6, "article6", "super article aussi", 34.5, "leuzvleuvf");
+//		articlesCarte.add(a1);
+//		articlesCarte.add(a2);
+//		articlesCarte.add(a3);
+//		articlesCarte.add(a4);
+//		articlesCarte.add(a5);
+//		articlesCarte.add(a6);
+//		carte.setArticles(articlesCarte);
+//		Client client = new Client(1, "DUPOND", "Toto");
+//		session.setAttribute("client", client);
+		// END TO REMOVE;
 		
 		request.getRequestDispatcher("WEB-INF/panier.jsp").forward(request, response);
 	}
