@@ -37,19 +37,29 @@ public class Authentification extends HttpServlet {
 		
 		DaoClient dc = new DaoClient();		
 		
+		
 		Client c = new Client();
 		
 		try {
 			c = dc.selectById(id);
-			if(dc.selectById(id) != null & (dc.selectById(id).getPassword()).equals(password))
+			System.out.println(dc.selectById(id));
+			//if(dc.selectById(id) != null | (dc.selectById(id).getPassword()).equals(password))
+			if(dc.selectById(id) == null)
 				{
-				//System.out.println("OK");
-				request.getRequestDispatcher("menu.jsp").forward(request, response);
+				//System.out.println("OK");			
+				request.getRequestDispatcher("inscription.jsp").forward(request, response);
 				}
 			else
 			{
-				//System.out.println("NOK");
-				request.getRequestDispatcher("inscription.jsp").forward(request, response);
+				if ((dc.selectById(id).getPassword()).equals(password))
+				{
+					//System.out.println("NOK");
+					request.getRequestDispatcher("carte.jsp").forward(request, response);
+				}
+				else
+				{
+					request.getRequestDispatcher("authentification.jsp").forward(request, response);
+				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
