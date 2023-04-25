@@ -106,7 +106,7 @@
 		<form class="col" action="commande" method="POST">
 			<input type="hidden" name="prixTotal" value="${panier.getTotal()}">
 			<button type="submit" style="float: right;" class="btn btn-success impact-btn">
-				Valider la commande
+				Valider le panier
 			</button>
 		</form>
 		
