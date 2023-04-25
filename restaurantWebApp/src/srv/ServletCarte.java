@@ -38,6 +38,7 @@ public class ServletCarte extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.getAttribute("client");
+		
 		DaoArticle dao = new DaoArticle();
 
 		try {

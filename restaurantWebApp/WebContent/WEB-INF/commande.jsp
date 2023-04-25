@@ -34,14 +34,28 @@
 			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="authentification">Login</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="inscription">Inscription</a>
-			        </li>
-			        <li class="nav-item">
 			          <a class="nav-link" href="panier">Mon Menu</a>
 			        </li>
+			        <%
+			        	Client clientMenu = (Client)session.getAttribute("client");
+			        	boolean isClient = (clientMenu !=null && clientMenu.getId()!=0);
+			        %>
+			        <%if(isClient){%>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="compte.jsp">Compte</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="deco">Déconnexion</a>
+			        	</li>
+			        <%} %>
+			        <%if(!isClient){%>
+			        	<li class="nav-item">
+				          <a class="nav-link" href="authentification">Login</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="inscription">Inscription</a>
+				        </li>
+			        <%} %>
 			      </ul>
 			    </div>
 			  </div>
