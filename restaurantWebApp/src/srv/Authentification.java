@@ -16,7 +16,7 @@ import model.Client;
 /**
  * Servlet implementation class Authentification
  */
-@WebServlet("/authentification")
+@WebServlet("/getauthentification")
 public class Authentification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

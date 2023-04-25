@@ -49,12 +49,13 @@
 				Client client = new Client();
 			}
 			Panier panier = (Panier) session.getAttribute("panier");
+			String prixTotal = request.getParameter("prixTotal");
 		%>	
 		
 		<section class="d-flex align-items-center flex-column">
 			<p class="text-success recap">Félicitation <c:out value="${client.getPrenom()}"/> <c:out value="${client.getNom()}"/>.
 			<br>Votre commande est validée.<br>
-			Le montant total est de <c:out value="${request.getAttribute("prixTotal")}€"/></p>
+			Le montant total est de <%= prixTotal %>€</p>
 			<img alt="photo bon appetit" width="200px" src="images/validee.jpg">
 		</section>
 	</main>
