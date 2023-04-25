@@ -37,6 +37,7 @@ public class Authentification extends HttpServlet {
 		
 		DaoClient dc = new DaoClient();		
 		
+		
 		Client c = new Client();
 		
 		try {

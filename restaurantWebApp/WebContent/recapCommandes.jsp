@@ -48,6 +48,7 @@ ArrayList<Commande> commandes = (ArrayList<Commande>)request.getAttribute("comma
 
 %>
 
+
 <h1>Commandes passées</h1>
 	
 	<div id="recapCommandes" class="col m-2 mt-0">

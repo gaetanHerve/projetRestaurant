@@ -43,6 +43,7 @@
 	<div>
 	
 <h1>Veuillez vous inscrire</h1>
+
 	
 <form action="Inscription" method = "post">
   <div class="form-group row">
