@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@page import="model.Client"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,14 +29,28 @@
 			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="authentification">Login</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="inscription">Inscription</a>
-			        </li>
-			        <li class="nav-item">
 			          <a class="nav-link" href="panier">Mon Menu</a>
 			        </li>
+			        <%
+			        	Client client = (Client)session.getAttribute("client");
+			        	boolean isClient = (client !=null && client.getId()!=0);
+			        %>
+			        <%if(isClient){%>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="compte.jsp">Compte</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="deco">Déconnexion</a>
+			        	</li>
+			        <%} %>
+			        <%if(!isClient){%>
+			        	<li class="nav-item">
+				          <a class="nav-link" href="authentification">Login</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="inscription">Inscription</a>
+				        </li>
+			        <%} %>
 			      </ul>
 			    </div>
 			  </div>
