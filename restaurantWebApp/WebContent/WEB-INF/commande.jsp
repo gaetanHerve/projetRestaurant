@@ -45,7 +45,11 @@
 		</header>
 		
 		<%
-			Client client = (Client) session.getAttribute("client");
+			if (session.getAttribute("client") != null) {
+				Client client = (Client) session.getAttribute("client");	
+			} else {
+				Client client = new Client();
+			}
 			Panier panier = (Panier) request.getAttribute("panier");
 		%>
 		
@@ -97,23 +101,6 @@
 		<section class="d-flex justify-content-center">
 		<div>
 			<img alt="banniere" src="images/banniere.PNG">
-			
-			<div class="mt-3 w-100">
-			  <div class="mt-4 p-4 bg-light text-dark">
-			    <h1>Contact</h1> 
-			    <p>Paris,France</p> 
-			    <form action="Servlet1" method="post">
-			       <br>  
-			       <input type="text" name="nom" placeholder="Nom">
-			       <input type="email" name="email" placeholder="Email">
-			       <input type="text" name="avis" placeholder="Laissez votre commentaire">
-		      		<input type="submit" value="Submit">
-				
-				</form>
-			  </div>
-			</div>
-		</div>
-			
 		</section>
 	</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
