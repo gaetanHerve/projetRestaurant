@@ -34,23 +34,32 @@ public class ServletCommande extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TO REMOVE
-		HttpSession session = request.getSession();
-		Client client = new Client(1, "DUPOND", "Toto");
-		Article a1 = new Article(1, "article1", "super article", 12.5, "leuzvleuvf");
-		Article a2 = new Article(2, "article2", "super article aussi", 34.5, "leuzvleuvf");
-		LignePanier lp1 = new LignePanier(a1, 3);
-		LignePanier lp2 = new LignePanier(a2, 1);
-		ArrayList<LignePanier> lignes = new ArrayList<LignePanier>();
-		lignes.add(lp1);
-		lignes.add(lp2);
 		
-		Panier panier = new Panier(lignes);
-		request.setAttribute("panier", panier);
-		request.setAttribute("lignes", lignes);
-		session.setAttribute("client", client);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("panier") == null) {
+			Panier panier = new Panier();
+			session.setAttribute("panier", panier);
+		} /* else {
+			Panier panier = (Panier)session.getAttribute("panier");
+		} */
+		
+		// TO REMOVE : test dataset
+//		Client client = new Client(1, "DUPOND", "Toto");
+//		Article a1 = new Article(1, "article1", "super article", 12.5, "leuzvleuvf");
+//		Article a2 = new Article(2, "article2", "super article aussi", 34.5, "leuzvleuvf");
+//		LignePanier lp1 = new LignePanier(a1, 3);
+//		LignePanier lp2 = new LignePanier(a2, 1);
+//		ArrayList<LignePanier> lignes = new ArrayList<LignePanier>();
+//		lignes.add(lp1);
+//		lignes.add(lp2);
+//		
+//		Panier panier = new Panier(lignes);
+//		request.setAttribute("panier", panier);
+//		request.setAttribute("lignes", lignes);
+//		session.setAttribute("client", client);
 		// END TO REMOVE
-		// send prixTotal
+		
 		request.getRequestDispatcher("WEB-INF/commande.jsp").forward(request, response);
 	}
 

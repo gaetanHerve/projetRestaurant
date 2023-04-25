@@ -43,9 +43,9 @@ public class ServletPanier extends HttpServlet {
 		if (session.getAttribute("panier") == null) {
 			Panier panier = new Panier();
 			session.setAttribute("panier", panier);
-		} else {
+		} /*else {
 			Panier panier = (Panier)session.getAttribute("panier");
-		}
+		} */
 		
 		Carte carte = new Carte();
 		if (session.getAttribute("carte") == null) {
