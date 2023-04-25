@@ -13,14 +13,13 @@ import model.Panier;
 
 public class TestModel {
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException
-	{
-		//testDaoArticle();
-		//testDaoClient();
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		// testDaoArticle();
+		// testDaoClient();
 		testDaoCommande();
 
 	}
-	
+
 	public static void testDaoArticle() throws ClassNotFoundException, SQLException {
 
 		DaoArticle da = new DaoArticle();
@@ -45,9 +44,9 @@ public class TestModel {
 	}
 
 	public static void testDaoClient() throws ClassNotFoundException, SQLException {
-		
+
 		DaoClient dc = new DaoClient();
-		
+
 		Complement comp1 = new Complement("12 rue de wall street", "0600000000", "allergie 1");
 		Complement comp2 = new Complement("16 avenue des champ elysee", "0600000001", "allergie 2");
 
@@ -62,7 +61,7 @@ public class TestModel {
 		System.out.println("Test Update");
 		Complement comp3 = new Complement("dans la france", "0600000002", "allergie 3");
 		dc.update(new Client(3, "gg", "hh", comp3, "mdpgg"));
-		
+
 		System.out.println("Test SelectById");
 		System.out.println(dc.selectById(3));
 
@@ -72,9 +71,9 @@ public class TestModel {
 	}
 
 	public static void testDaoCommande() throws ClassNotFoundException, SQLException {
-		
+
 		DaoCommande dc = new DaoCommande();
-		
+
 		Panier p = new Panier();
 
 		System.out.println("Test Insert");
@@ -94,5 +93,5 @@ public class TestModel {
 		System.out.println("Test Select");
 		System.out.println(dc.select());
 	}
-	
+
 }
