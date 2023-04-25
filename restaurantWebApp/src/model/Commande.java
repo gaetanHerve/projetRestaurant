@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Commande {
 	private int id;
 	private int idClient;
@@ -19,6 +21,15 @@ public class Commande {
 		this.prixTotal = prixTotal;
 	}
 	
+	public Commande(int idClient, String jour, double prixTotal, Panier panier, String infos) {
+		super();
+		this.idClient = idClient;
+		this.jour = jour;
+		this.prixTotal = prixTotal;
+		this.panier = panier;
+		this.infos = infos;
+	}
+
 	public Commande(int id, int idClient, String jour, double prixTotal) {
 		super();
 		this.id = id;
@@ -33,6 +44,16 @@ public class Commande {
 		this.idClient = idClient;
 		this.jour = jour;
 		this.prixTotal = prixTotal;
+		this.infos = infos;
+	}
+
+	public Commande(int id, int idClient, String jour, double prixTotal, Panier panier, String infos) {
+		super();
+		this.id = id;
+		this.idClient = idClient;
+		this.jour = jour;
+		this.prixTotal = prixTotal;
+		this.panier = panier;
 		this.infos = infos;
 	}
 

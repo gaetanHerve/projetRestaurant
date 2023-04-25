@@ -14,6 +14,11 @@ public class Complement {
 		this.telephone = telephone;
 		this.instructions = instructions;
 	}
+	
+	public Complement(String adresse) {
+		super();
+		this.adresse = adresse;
+	}
 	public String getAdresse() {
 		return adresse;
 	}

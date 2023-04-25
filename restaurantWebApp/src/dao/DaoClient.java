@@ -72,13 +72,13 @@ public class DaoClient {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/dbprojetrestaurant","root","root");
 		PreparedStatement ps= conn.prepareStatement(sql);
-		ps.setInt(1, c.getId());
-		ps.setString(2, c.getPassword());
-		ps.setString(3, c.getNom());
-		ps.setString(4, c.getPrenom());
-		ps.setString(5, c.getComplement().getAdresse());
-		ps.setString(6, c.getComplement().getTelephone());
-		ps.setString(7, c.getComplement().getInstructions());
+		ps.setString(1, c.getPassword());
+		ps.setString(2, c.getNom());
+		ps.setString(3, c.getPrenom());
+		ps.setString(4, c.getComplement().getAdresse());
+		ps.setString(5, c.getComplement().getTelephone());
+		ps.setString(6, c.getComplement().getInstructions());
+		ps.setInt(7, c.getId());
 		ps.executeUpdate();
 		conn.close();
 	}
@@ -101,7 +101,8 @@ public class DaoClient {
 					rs.getInt("id"),
 					rs.getString("nom"),
 					rs.getString("prenom"),
-					comp
+					comp,
+					rs.getString("pass")
 				);
 		}
 

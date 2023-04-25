@@ -82,4 +82,20 @@ public class DaoCommande {
 		return com;
 	}
 	
+	public ArrayList<Commande> selectByIdClient(int idclient) throws ClassNotFoundException, SQLException {
+		ArrayList<Commande> com = new ArrayList<Commande>();
+		String sql = "select * from commandes where idclient='"+idclient+"'";
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/dbprojetrestaurant","root","root");
+		Statement st= conn.createStatement();
+		ResultSet rs=st.executeQuery(sql);
+		
+		while(rs.next()){
+			com.add(new Commande(rs.getInt("id"), rs.getInt("idclient"), rs.getString("jour"),rs.getDouble("prixtotal"),rs.getString("infos")));
+		}
+		
+		conn.close();
+		return com;
+	}
+	
 }
