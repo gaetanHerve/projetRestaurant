@@ -50,7 +50,7 @@
 			} else {
 				Client client = new Client();
 			}
-			Panier panier = (Panier) request.getAttribute("panier");
+			Panier panier = (Panier) session.getAttribute("panier");
 		%>
 		
 		<section class="recap-articles">
@@ -70,7 +70,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach var="ligne" items="${requestScope.lignes}">
+			  	<c:forEach var="ligne" items="${panier.getLignes()}">
 				    <tr>
 				      <th scope="row"><c:out value="${ligne.getArticle().getNom()}" /></th>
 				      <td><c:out value="${ligne.getQte()}"/></td>
