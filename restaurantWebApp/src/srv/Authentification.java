@@ -46,18 +46,18 @@ public class Authentification extends HttpServlet {
 			if(dc.selectById(id) == null)
 				{
 				//System.out.println("OK");			
-				request.getRequestDispatcher("inscription.jsp").forward(request, response);
+				request.getRequestDispatcher("inscription").forward(request, response);
 				}
 			else
 			{
 				if ((dc.selectById(id).getPassword()).equals(password))
 				{
 					//System.out.println("NOK");
-					request.getRequestDispatcher("carte.jsp").forward(request, response);
+					request.getRequestDispatcher("carte").forward(request, response);
 				}
 				else
 				{
-					request.getRequestDispatcher("authentification.jsp").forward(request, response);
+					request.getRequestDispatcher("authentification").forward(request, response);
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
