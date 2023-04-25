@@ -59,6 +59,8 @@ public class ModifClient extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		request.getRequestDispatcher("accueil.jsp").forward(request, response);
 	}
 
 	/**
