@@ -37,7 +37,7 @@
 	</div>
 	</nav> </header> <section class="d-flex justify-content-center">
 
-		<form action="Authentification" >
+		<form action="getauthentification" >
 		
 			<div class="form-outline mb-4">
 				Indentifiant : <input type="text" id="form2Example1"

@@ -31,7 +31,7 @@
 			          <a class="nav-link" href="authentification.jsp">Login</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="inscription.jsp">Inscription</a>
+			          <a class="nav-link" href="inscription">Inscription</a>
 			        </li>
 			        <li class="nav-item">
 			          <a class="nav-link" href="menu.jsp">Mon Menu</a>
