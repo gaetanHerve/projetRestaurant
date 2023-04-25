@@ -19,86 +19,94 @@
 	crossorigin="anonymous">
 </head>
 <body class="d-flex justify-content-center my-4">
-	<main> <header class="mb-4"> <img alt="logo"
-		src="images/logo.jpg"> <nav
-		class="navbar navbar-expand-lg bg-success">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="accueil.jsp">Eat & Love</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="carte.jsp">Notre carte</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="authentification.jsp">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="inscription.jsp">Inscription</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="menu.jsp">Mon
-						Menu</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav> </header> <%
- 	if (session.getAttribute("client") != null) {
- 		Client client = (Client) session.getAttribute("client");
- 	} else {
- 		Client client = new Client();
- 	}
- 	Panier panier = (Panier) request.getAttribute("panier");
- %> <section class="recap-articles">
-	<h1>
-		La commande de
-		<c:out value="${client.getPrenom()}" />
-		<c:out value="${client.getNom()}" />
-		(Montant panier :
-		<c:out value="${panier.getTotal()}€)" />
-	</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Articles</th>
-				<th scope="col">Quantité</th>
-				<th scope="col">Prix total</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="ligne" items="${requestScope.lignes}">
-				<tr>
-					<th scope="row"><c:out value="${ligne.getArticle().getNom()}" /></th>
-					<td><c:out value="${ligne.getQte()}" /></td>
-					<td><c:out value="${ligne.getPrixTotal()}" /></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<div class="row">
-		<div class="col">
-			<a href="./panier">
-				<button type="button" class="btn btn-success impact-btn">
-					Retour au panier</button>
-			</a>
-		</div>
-		<!-- RENAME ACTION!! -->
-		<form class="col" action="ServletLast" method="POST">
-			<input type="hidden" name="prixTotal" value="${panier.getTotal()}">
-			<button type="submit" style="float: right;"
-				class="btn btn-success impact-btn">Valider la commande</button>
-		</form>
-	</div>
-
-	</section> <section class="d-flex justify-content-center">
-	<div>
-		<img alt="banniere" src="images/banniere.PNG">
-	</section> </main>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-		crossorigin="anonymous"></script>
+	<main>
+		<header class="mb-4">
+			<img alt="logo" src="images/logo.jpg">
+			<nav class="navbar navbar-expand-lg bg-success">
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="./accueil.jsp">Eat & Love</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			        <li class="nav-item">
+			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="authentification">Login</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="inscription">Inscription</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="panier">Mon Menu</a>
+			        </li>
+			      </ul>
+			    </div>
+			  </div>
+			</nav>
+		</header>
+		
+		<%
+			if (session.getAttribute("client") != null) {
+				Client client = (Client) session.getAttribute("client");	
+			} else {
+				Client client = new Client();
+			}
+			Panier panier = (Panier) session.getAttribute("panier");
+		%>
+		
+		<section class="recap-articles">
+			<h1>La commande de
+				<c:out value="${client.getPrenom()}"/>
+				<c:out value="${client.getNom()}"/>
+				(Montant panier :
+				<c:out value="${panier.getTotal()}€)"/>
+			</h1>
+			
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">Articles</th>
+			      <th scope="col">Quantité</th>
+			      <th scope="col">Prix total</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<c:forEach var="ligne" items="${panier.getLignes()}">
+				    <tr>
+				      <th scope="row"><c:out value="${ligne.getArticle().getNom()}" /></th>
+				      <td><c:out value="${ligne.getQte()}"/></td>
+				      <td><c:out value="${ligne.getPrixTotal()}"/></td>
+				    </tr>
+			    </c:forEach>
+			  </tbody>
+			</table>
+			<div class="row">
+				<div class="col">
+					<a href="./panier">
+						<button type="button" class="btn btn-success impact-btn">
+							Retour au panier
+						</button>
+					</a> 
+				</div>
+				<!-- RENAME ACTION!! -->
+				<form class="col" action="ServletRecap" method="POST">
+					<input type="hidden" name="prixTotal" value="${panier.getTotal()}">
+					<button type="submit" style="float: right;" class="btn btn-success impact-btn">
+						Valider la commande
+					</button>
+				</form>
+			</div>
+			
+		</section>
+		
+		<section class="d-flex justify-content-center">
+		<div>
+			<img alt="banniere" src="images/banniere.PNG">
+		</section>
+	</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

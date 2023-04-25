@@ -49,7 +49,7 @@ public class ServletPanier extends HttpServlet {
 			 */
 
 		Carte carte = new Carte();
-		if (session.getAttribute("carte") == null) {
+		if (app.getAttribute("carte") == null) {
 			app.setAttribute("carte", carte);
 		} else {
 			carte = (Carte) app.getAttribute("carte");

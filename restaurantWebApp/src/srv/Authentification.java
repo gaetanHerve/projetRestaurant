@@ -23,15 +23,11 @@ public class Authentification extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+
 	public Authentification() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -44,12 +40,20 @@ public class Authentification extends HttpServlet {
 
 		try {
 			c = dc.selectById(id);
-			if (dc.selectById(id) != null & (dc.selectById(id).getPassword()).equals(password))
+			System.out.println(dc.selectById(id));
+			// if(dc.selectById(id) != null |
+			// (dc.selectById(id).getPassword()).equals(password))
+			if (dc.selectById(id) == null) {
 				// System.out.println("OK");
-				request.getRequestDispatcher("menu.jsp").forward(request, response);
-			else
-				// System.out.println("NOK");
-				request.getRequestDispatcher("inscription.jsp").forward(request, response);
+				request.getRequestDispatcher("inscription").forward(request, response);
+			} else {
+				if ((dc.selectById(id).getPassword()).equals(password)) {
+					// System.out.println("NOK");
+					request.getRequestDispatcher("carte").forward(request, response);
+				} else {
+					request.getRequestDispatcher("authentification").forward(request, response);
+				}
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
