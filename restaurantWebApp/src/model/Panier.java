@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Panier {
@@ -7,6 +9,7 @@ public class Panier {
 
 	public Panier() {
 		super();
+		lignes = new ArrayList<LignePanier>();
 	}
 
 	public Panier(List<LignePanier> lignes) {
@@ -22,10 +25,25 @@ public class Panier {
 		this.lignes = lignes;
 	}
 	
+	public int getArticleIndexInPanier(int articleRef) {
+		int result = -1;
+		if (!lignes.isEmpty()) {
+			for (int i = 0; i < lignes.size(); i++) {
+				if (lignes.get(i).getArticle().getRef() == articleRef) {
+					result = i;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	
 	public double getTotal() {
-		double result = 0;
-		for (LignePanier ligne : lignes) {
-			result += ligne.getArticle().getTarif() * ligne.getQte();
+		double result = 0.0;
+		if (!lignes.isEmpty()) {
+			for (LignePanier ligne : lignes) {
+				result += ligne.getArticle().getTarif() * ligne.getQte();
+			}
 		}
 		return result;
 	}
