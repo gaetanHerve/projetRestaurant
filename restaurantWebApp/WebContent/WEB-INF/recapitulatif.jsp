@@ -1,10 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="model.Carte"%>
+<%@page import="model.Panier"%>
+<%@page import="model.Client"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Récapitulatif</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RÃ©capitulatif</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <link rel="stylesheet" href="style/style.css">
 </head>
@@ -38,8 +42,19 @@
 			</nav>
 		</header>
 		
+		<%
+			if (session.getAttribute("client") != null) {
+				Client client = (Client) session.getAttribute("client");	
+			} else {
+				Client client = new Client();
+			}
+			Panier panier = (Panier) session.getAttribute("panier");
+		%>	
+		
 		<section class="d-flex align-items-center flex-column">
-			<p class="text-success recap">Félicitation <%=session.getAttribute("client") %>.<br>Votre commande est validée.<br>Le montant total est de <%=request.getAttribute("prixTotal") %></p>
+			<p class="text-success recap">FÃ©licitation <c:out value="${client.getPrenom()}"/> <c:out value="${client.getNom()}"/>.
+			<br>Votre commande est validÃ©e.<br>
+			Le montant total est de <c:out value="${request.getAttribute("prixTotal")}â‚¬"/></p>
 			<img alt="photo bon appetit" width="200px" src="images/validee.jpg">
 		</section>
 	</main>

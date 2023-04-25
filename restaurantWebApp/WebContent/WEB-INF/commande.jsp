@@ -88,7 +88,7 @@
 					</a> 
 				</div>
 				<!-- RENAME ACTION!! -->
-				<form class="col" action="ServletLast" method="POST">
+				<form class="col" action="ServletRecap" method="POST">
 					<input type="hidden" name="prixTotal" value="${panier.getTotal()}">
 					<button type="submit" style="float: right;" class="btn btn-success impact-btn">
 						Valider la commande

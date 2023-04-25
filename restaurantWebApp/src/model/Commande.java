@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Commande {
 	private int id;
 	private int idClient;
@@ -103,9 +105,13 @@ public class Commande {
 		this.infos = infos;
 	}
 
-	public void generateInfos() {
+	public void generateInfos(Panier panier) {
 		String result = "";
-		// prendre le panier => générer la string
+		List<LignePanier> lignes = panier.getLignes();
+		
+		for(LignePanier l: lignes){
+			result+=l.getQte()+"-"+l.getArticle().getRef()+";";
+		}
 		this.setInfos(result);
 	}
 
