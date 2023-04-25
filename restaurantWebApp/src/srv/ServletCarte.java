@@ -2,6 +2,7 @@ package srv;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoClient;
-import model.Client;
-import model.Complement;
+import dao.DaoArticle;
+import model.Article;
 
 /**
- * Servlet implementation class Inscription
+ * Servlet implementation class ServletCarte
  */
-@WebServlet("/inscription")
-public class Inscription extends HttpServlet {
+@WebServlet("/carte")
+public class ServletCarte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Inscription() {
+	public ServletCarte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,25 +35,19 @@ public class Inscription extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String password = request.getParameter("password");
-		String adresse = request.getParameter("adresse");
-
-		Complement comp = new Complement(adresse);
-		Client c = new Client(id, nom, prenom, comp, password);
-
-		DaoClient dc = new DaoClient();
+		DaoArticle dao = new DaoArticle();
 
 		try {
-			dc.insert(c);
-		} catch (ClassNotFoundException | SQLException e) {
+			ArrayList<Article> articles = dao.select();
+
+			request.setAttribute("article", articles);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		// request.setAttribute("client", c);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("WEB-INF/carte.jsp").forward(request, response);
 	}
 
 	/**
