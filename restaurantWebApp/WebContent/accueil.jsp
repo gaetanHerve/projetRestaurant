@@ -21,16 +21,16 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			        <li class="nav-item">
-			          <a class="nav-link active" aria-current="page" href="carte.jsp">Notre carte</a>
+			          <a class="nav-link active" aria-current="page" href="carte">Notre carte</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="authentification.jsp">Login</a>
+			          <a class="nav-link" href="authentification">Login</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="inscription.jsp">Inscription</a>
+			          <a class="nav-link" href="inscription">Inscription</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="menu.jsp">Mon Menu</a>
+			          <a class="nav-link" href="panier">Mon Menu</a>
 			        </li>
 			      </ul>
 			    </div>
